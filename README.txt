@@ -2,6 +2,12 @@
 
 * Ruby client for ZeroPush (https://api.zeropush.com)
 
+---
+
+== DISCLAIMER:
+
+This gem is not for use at this time.
+
 == DESCRIPTION:
 
 the zero_push integrates with your Rails/Rack apps to send push notifications to your users.
