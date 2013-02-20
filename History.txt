@@ -1,7 +1,0 @@
-=== 1.0.0 / 2013-02-18
-
-* Initial Release:
-  Supported /v1 APIs
-
-  * POST /notify
-

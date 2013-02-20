@@ -1,16 +1,11 @@
-require "rubygems"
-require "hoe"
+require "rake/testtask"
+require "bundler/gem_tasks"
 
-# Hoe.plugin :compiler
-# Hoe.plugin :gem_prelude_sucks
-# Hoe.plugin :inline
-# Hoe.plugin :minitest
-# Hoe.plugin :racc
-# Hoe.plugin :rcov
-# Hoe.plugin :rubyforge
+task default: :test
 
-Hoe.spec "zero_push" do
-  developer "Stefan Natchev", "stefan.natchev@gmail.com"
-  developer "Adam Duke",      "adam.v.duke@gmail.com"
-  dependency "faraday", "0.8.5"
+Rake::TestTask.new do |t|
+  t.libs << 'lib' << 'spec'
+  t.test_files = Dir["spec/**/*_spec.rb"]
+  t.verbose = true
 end
+

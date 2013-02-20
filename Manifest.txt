@@ -1,7 +1,0 @@
-.autotest
-History.txt
-Manifest.txt
-README.txt
-Rakefile
-lib/zero_push.rb
-test/test_zero_push.rb
