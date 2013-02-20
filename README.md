@@ -1,6 +1,10 @@
 # ZeroPush
 
-TODO: Write a gem description
+---
+
+## Disclaimer:
+
+This gem is not for use at this time
 
 ## Installation
 
