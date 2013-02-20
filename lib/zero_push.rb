@@ -13,9 +13,9 @@ module ZeroPush
 
     def client
       Faraday.new(url: url) do |c|
-        c.token_auth self.auth_token
-        c.request :url_encoded            # form-encode POST params
-        c.adapter Faraday.default_adapter # Net::HTTP
+        c.token_auth  self.auth_token
+        c.request     :url_encoded            # form-encode POST params
+        c.adapter     Faraday.default_adapter # Net::HTTP
       end
     end
   end
