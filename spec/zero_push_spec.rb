@@ -4,7 +4,7 @@ require 'spec_helper'
 
 describe ZeroPush do
   before do
-    ZeroPush.url = "https://staging.zeropush.com"
+    ZeroPush::URL = "https://staging.zeropush.com"
     ZeroPush.auth_token = "acEJeDVC8if6XCxwe2js"
   end
 
