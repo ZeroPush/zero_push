@@ -2,7 +2,7 @@ require 'zero_push/version'
 require 'faraday'
 
 module ZeroPush
-  URL = "https://www.zeropush.com"
+  URL = "http://www.zeropush.com"
 
   class << self
     attr_accessor :auth_token
