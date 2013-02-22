@@ -1,10 +1,9 @@
 require 'spec_helper'
 
-#Faraday.default_adapter = :test
+ZeroPush::URL = "https://staging.zeropush.com"
 
 describe ZeroPush do
   before do
-    ZeroPush::URL = "https://staging.zeropush.com"
     ZeroPush.auth_token = "acEJeDVC8if6XCxwe2js"
   end
 
