@@ -7,6 +7,11 @@ module ZeroPush
   class << self
     attr_accessor :auth_token
 
+    def verify_credentials
+      response = client.get('/api/verify_credentials')
+      response.status == 200
+    end
+
     def notify(params)
       client.post('/api/notify', params)
     end

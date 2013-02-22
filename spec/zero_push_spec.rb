@@ -8,6 +8,25 @@ describe ZeroPush do
     ZeroPush.auth_token = "acEJeDVC8if6XCxwe2js"
   end
 
+  describe "/verify_credentials" do
+    before do
+      VCR.insert_cassette "verify_credentials"
+    end
+
+    after do
+      VCR.eject_cassette
+    end
+
+    it "should verify credentials successfully" do
+      ZeroPush.verify_credentials.must_equal true
+    end
+
+    it "should fail to verify credentials" do
+      ZeroPush.auth_token = "not a valid token"
+      ZeroPush.verify_credentials.must_equal false
+    end
+  end
+
   describe "/notify" do
     before do
       VCR.insert_cassette "notify"

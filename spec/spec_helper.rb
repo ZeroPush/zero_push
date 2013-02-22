@@ -6,6 +6,10 @@ require 'vcr'
 VCR.configure do |c|
   c.cassette_library_dir = 'spec/fixtures'
   c.hook_into :faraday
+  c.default_cassette_options = {
+    record: :new_episodes,
+    match_requests_on: [:method, :uri, :headers]
+  }
 end
 
 #TODO: remove this once Faraday 0.9.0 comes out
