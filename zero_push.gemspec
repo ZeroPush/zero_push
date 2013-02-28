@@ -8,8 +8,8 @@ Gem::Specification.new do |gem|
   gem.version       = ZeroPush::VERSION
   gem.authors       = ["Stefan Natchev", "Adam Duke"]
   gem.email         = ["stefan.natchev@gmail.com", "adam.v.duke@gmail.com"]
+  gem.summary       = %q{A gem for interacting with the ZeroPush API. (http://zeropush.com)}
   gem.description   = %q{A gem to wrap the ZeroPush API}
-  gem.summary       = %q{A gem to wrap the ZeroPush API}
   gem.homepage      = "https://github.com/ZeroPush/zero_push"
 
   gem.files         = `git ls-files`.split($/)
