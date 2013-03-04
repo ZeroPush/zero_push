@@ -2,6 +2,8 @@
 
 ---
 
+Build Status: [![Build Status](https://travis-ci.org/ZeroPush/zero_push.png)](https://travis-ci.org/ZeroPush/zero_push)
+
 ## Disclaimer:
 
 This gem is not for use at this time
