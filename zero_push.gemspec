@@ -22,4 +22,5 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency "minitest",  "~> 4.6.1"
   gem.add_development_dependency "vcr",       "~> 2.4.0"
   gem.add_development_dependency "yard",      "~> 0.8.4"
+  gem.add_development_dependency "rake",      "~> 10.0.3"
 end
