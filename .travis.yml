@@ -1,10 +1,18 @@
+---
 language: ruby
 rvm:
-  - "1.9.2"
-  - "1.9.3"
-  - jruby-19mode # JRuby in 1.9 mode
-  - rbx-19mode
+- 1.9.2
+- 1.9.3
+- jruby-19mode
+- rbx-19mode
 notifications:
   email:
-    - adam.v.duke@gmail.com
-    - stefan.natchev@gmail.com
+  - adam.v.duke@gmail.com
+  - stefan.natchev@gmail.com
+env:
+  global:
+  - secure: ! 'ILUUZU0RUJoOGipo5mpWFGz9rvherA9WBpEdrkQMQBXgGYz0BqqO3hVvdt6l
+
+      2A7p4RxNNxXlOaQ+XUs0s+5WU7O0ni4+QmGrqEWxDdatdd1rSmet7YWUj+H5
+
+      hIJmFtPYbk/ik89NCTYe+XW/RZrTTaUgfPSsYFifl/JanFRa/bE='
