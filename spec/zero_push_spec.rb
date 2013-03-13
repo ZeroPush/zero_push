@@ -4,7 +4,7 @@ ZeroPush::URL = "https://staging.zeropush.com"
 
 describe ZeroPush do
   before do
-    ZeroPush.auth_token = "acEJeDVC8if6XCxwe2js"
+    ZeroPush.auth_token = ENV["AUTH_TOKEN"]
   end
 
   describe "/verify_credentials" do

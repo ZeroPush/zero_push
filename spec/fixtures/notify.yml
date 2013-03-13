@@ -8,7 +8,7 @@ http_interactions:
       string: device_tokens%5B%5D=abc&alert=hi
     headers:
       Authorization:
-      - Token token="acEJeDVC8if6XCxwe2js"
+      - Token token="uVamTBsaKTBVNDjKd5wo"
       Content-Type:
       - application/x-www-form-urlencoded
   response:
@@ -20,17 +20,23 @@ http_interactions:
       - max-age=0, private, must-revalidate
       content-type:
       - application/json; charset=utf-8
+      date:
+      - Wed, 13 Mar 2013 21:05:29 GMT
       etag:
-      - ! '"4548a4f1a11a241120f97a1c3737817a"'
+      - ! '"58f271cd44a149e655e5c75c6ac3d588"'
       server:
       - thin 1.5.0 codename Knife
       set-cookie:
-      - _zero-push-session=BAh7BkkiD3Nlc3Npb25faWQGOgZFRkkiJWNhNjk0MThlNTkyN2U2MDU0OGI1NmNhMjRlYTM0NDAyBjsAVA%3D%3D--c2725a3ea06e0f18296784b9755884f9a2b00a72;
-        path=/; HttpOnly
+      - _zero-push-session=BAh7BkkiD3Nlc3Npb25faWQGOgZFRkkiJTk2NjVhZjc2YjMzZTMwNmQ0YjJhMzRiN2U4ZmQxYzk1BjsAVA%3D%3D--d186be60e0d9a153a4a9d08e1f3c8dfab34e1786;
+        path=/; secure; HttpOnly
+      strict-transport-security:
+      - max-age=31536000
+      x-rack-cache:
+      - invalidate, pass
       x-request-id:
-      - dfa3796a4db1cd63769e5618057d2d67
+      - aa38693443c1b79f3ff977d6652b8a7c
       x-runtime:
-      - '0.045433'
+      - '0.020943'
       x-ua-compatible:
       - IE=Edge
       transfer-encoding:
@@ -39,7 +45,7 @@ http_interactions:
       - Close
     body:
       encoding: US-ASCII
-      string: ! '{"message":"ok"}'
+      string: ! '{"sent_count":0,"inactive_tokens":[],"unregistered_tokens":["abc"]}'
     http_version: 
-  recorded_at: Wed, 20 Feb 2013 23:03:03 GMT
+  recorded_at: Wed, 13 Mar 2013 21:05:29 GMT
 recorded_with: VCR 2.4.0
