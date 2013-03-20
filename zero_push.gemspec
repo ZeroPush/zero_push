@@ -20,8 +20,12 @@ Gem::Specification.new do |gem|
 
   gem.add_dependency "faraday", "~> 0.8.5"
 
-  gem.add_development_dependency "minitest",  "~> 4.6.1"
-  gem.add_development_dependency "vcr",       "~> 2.4.0"
-  gem.add_development_dependency "yard",      "~> 0.8.4"
-  gem.add_development_dependency "rake",      "~> 10.0.3"
+  gem.add_development_dependency 'actionpack',    '~> 3.2.11'
+  gem.add_development_dependency 'activesupport', '~> 3.2.11'
+  gem.add_development_dependency 'minitest',      '~> 4.7.0'
+  gem.add_development_dependency 'mocha',         '~> 0.13.3'
+  gem.add_development_dependency 'rake',          '~> 10.0.3'
+  gem.add_development_dependency 'railties',      '~> 3.2.11'
+  gem.add_development_dependency 'vcr',           '~> 2.4.0'
+  gem.add_development_dependency 'yard',          '~> 0.8.4'
 end
