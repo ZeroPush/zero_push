@@ -16,6 +16,7 @@ Gem::Specification.new do |gem|
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.require_paths = ["lib"]
+  gem.required_ruby_version = '>= 1.9'
 
   gem.add_dependency "faraday", "~> 0.8.5"
 
@@ -23,5 +24,4 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency "vcr",       "~> 2.4.0"
   gem.add_development_dependency "yard",      "~> 0.8.4"
   gem.add_development_dependency "rake",      "~> 10.0.3"
-  gem.add_development_dependency "travis",    "~> 1.2.0"
 end
