@@ -1,10 +1,8 @@
 require 'spec_helper'
 
-ZeroPush::URL = "https://staging.zeropush.com"
-
 describe ZeroPush do
   before do
-    ZeroPush.auth_token = ENV["AUTH_TOKEN"]
+    ZeroPush.auth_token = ENV["AUTH_TOKEN"] || "test_token"
   end
 
   describe "/verify_credentials" do

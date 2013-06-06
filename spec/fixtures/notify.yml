@@ -2,61 +2,13 @@
 http_interactions:
 - request:
     method: post
-    uri: https://staging.zeropush.com/api/notify
+    uri: https://api.zeropush.com/notify
     body:
       encoding: US-ASCII
       string: device_tokens%5B%5D=abc&alert=hi
     headers:
       Authorization:
-      - Token token="uVamTBsaKTBVNDjKd5wo"
-      Content-Type:
-      - application/x-www-form-urlencoded
-  response:
-    status:
-      code: 200
-      message: 
-    headers:
-      cache-control:
-      - max-age=0, private, must-revalidate
-      content-type:
-      - application/json; charset=utf-8
-      date:
-      - Wed, 13 Mar 2013 21:05:29 GMT
-      etag:
-      - ! '"58f271cd44a149e655e5c75c6ac3d588"'
-      server:
-      - thin 1.5.0 codename Knife
-      set-cookie:
-      - _zero-push-session=BAh7BkkiD3Nlc3Npb25faWQGOgZFRkkiJTk2NjVhZjc2YjMzZTMwNmQ0YjJhMzRiN2U4ZmQxYzk1BjsAVA%3D%3D--d186be60e0d9a153a4a9d08e1f3c8dfab34e1786;
-        path=/; secure; HttpOnly
-      strict-transport-security:
-      - max-age=31536000
-      x-rack-cache:
-      - invalidate, pass
-      x-request-id:
-      - aa38693443c1b79f3ff977d6652b8a7c
-      x-runtime:
-      - '0.020943'
-      x-ua-compatible:
-      - IE=Edge
-      transfer-encoding:
-      - chunked
-      connection:
-      - Close
-    body:
-      encoding: US-ASCII
-      string: ! '{"sent_count":0,"inactive_tokens":[],"unregistered_tokens":["abc"]}'
-    http_version: 
-  recorded_at: Wed, 13 Mar 2013 21:05:29 GMT
-- request:
-    method: post
-    uri: https://staging.zeropush.com/api/notify
-    body:
-      encoding: US-ASCII
-      string: device_tokens%5B%5D=abc&alert=hi
-    headers:
-      Authorization:
-      - Token token="uVamTBsaKTBVNDjKd5wo"
+      - Token token="test_token"
       User-Agent:
       - Faraday v0.8.6
       Content-Type:
@@ -66,36 +18,40 @@ http_interactions:
       code: 200
       message: 
     headers:
-      cache-control:
-      - max-age=0, private, must-revalidate
+      server:
+      - nginx/1.2.6
+      date:
+      - Thu, 06 Jun 2013 20:13:18 GMT
       content-type:
       - application/json; charset=utf-8
-      date:
-      - Wed, 20 Mar 2013 18:58:26 GMT
-      etag:
-      - ! '"58f271cd44a149e655e5c75c6ac3d588"'
-      server:
-      - thin 1.5.0 codename Knife
-      set-cookie:
-      - _zero-push-session=BAh7BkkiD3Nlc3Npb25faWQGOgZFRkkiJWQ2NzQ5MmFhM2U3ZmE3ZWI0MTIxODdhZGIyZDFjYjdiBjsAVA%3D%3D--bdfd5e216c848810a626fd7f0cef135ec5175d70;
-        path=/; secure; HttpOnly
-      strict-transport-security:
-      - max-age=31536000
-      x-rack-cache:
-      - invalidate, pass
-      x-request-id:
-      - e9f9a059ea3cdf9918be957f1732239f
-      x-runtime:
-      - '3.199979'
-      x-ua-compatible:
-      - IE=Edge
       transfer-encoding:
       - chunked
       connection:
-      - Close
+      - close
+      status:
+      - 200 OK
+      strict-transport-security:
+      - max-age=31536000
+      x-ua-compatible:
+      - IE=Edge,chrome=1
+      etag:
+      - ! '"58f271cd44a149e655e5c75c6ac3d588"'
+      cache-control:
+      - max-age=0, private, must-revalidate
+      set-cookie:
+      - _zero-push-session=BAh7BkkiD3Nlc3Npb25faWQGOgZFRkkiJTAyN2ZlNmZiYmE2NDAwZTAwNDhkZjljMDhjOTk5MDMzBjsAVA%3D%3D--123a1dc1afeac26db5bea15eea8574e82e0d91b2;
+        path=/; secure; HttpOnly
+      x-request-id:
+      - cb7a26e273628f7f0c9f3c4bbcfb5007
+      x-runtime:
+      - '0.045243'
+      x-rack-cache:
+      - invalidate, pass
+      x-powered-by:
+      - Phusion Passenger 4.0.2
     body:
       encoding: US-ASCII
       string: ! '{"sent_count":0,"inactive_tokens":[],"unregistered_tokens":["abc"]}'
     http_version: 
-  recorded_at: Wed, 20 Mar 2013 18:58:26 GMT
+  recorded_at: Thu, 06 Jun 2013 20:13:18 GMT
 recorded_with: VCR 2.4.0
