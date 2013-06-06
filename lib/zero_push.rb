@@ -11,7 +11,7 @@ module ZeroPush
     #
     # @return [Boolean]
     def verify_credentials
-      response = client.get('/api/verify_credentials')
+      response = client.get('/verify_credentials')
       response.status == 200
     end
 
@@ -20,7 +20,7 @@ module ZeroPush
     # @param params [Hash]
     # @return response
     def notify(params)
-      client.post('/api/notify', params)
+      client.post('/notify', params)
     end
 
     # the HTTP client configured for API requests
