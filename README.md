@@ -1,12 +1,6 @@
-# ZeroPush
-
----
+[![ZeroPush](https://github.com/SymmetricInfinity/zero_push/raw/master/doc/zeropush-header.png)](https://zeropush.com)
 
 Build Status: [![Build Status](https://travis-ci.org/SymmetricInfinity/zero_push.png?branch=master)](https://travis-ci.org/SymmetricInfinity/zero_push)
-
-## Disclaimer:
-
-This gem is not for use at this time
 
 ## Installation
 
@@ -24,7 +18,11 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Generate the ZeroPush initializer if you are using Ruby on Rails.
+
+    $ rails g zero_push:install
+
+For more documentation, check our [Getting Started Guide with ZeroPush](https://zeropush.com/documentation)
 
 ## Contributing
 
