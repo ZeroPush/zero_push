@@ -10,7 +10,7 @@ Gem::Specification.new do |gem|
   gem.email         = ["stefan.natchev@gmail.com", "adam.v.duke@gmail.com"]
   gem.summary       = %q{A gem for interacting with the ZeroPush API. (http://zeropush.com)}
   gem.description   = %q{ZeroPush is a simple service for sending iOS push notifications. (http://zeropush.com)}
-  gem.homepage      = "https://github.com/SymmetricInfinity/zero_push"
+  gem.homepage      = "https://zeropush.com"
 
   gem.files         = `git ls-files`.split($/)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
