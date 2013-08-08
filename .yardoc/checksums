@@ -1,5 +1,0 @@
-lib/zero_push.rb 4e26ee56b254c4e6c4e4e94fc97f85847af1118d
-lib/zero_push/client.rb 320cb3888492b6ee1145baaa28e48fc5807dacfe
-lib/zero_push/version.rb 5e2505a1d0944efdf5713ab88a4c888dea936503
-lib/generators/zero_push/install_generator.rb 35d1c52c5657e75a1a0d109af66974d28dd922df
-lib/generators/zero_push/templates/zero_push.rb 8727f64fb299b7a89d0526acfacb3eaef546227e
