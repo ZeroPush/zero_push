@@ -11,8 +11,3 @@ VCR.configure do |c|
     match_requests_on: [:method, :uri, :headers]
   }
 end
-
-#TODO: remove this once Faraday 0.9.0 comes out
-require 'net/https'
-OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
-#Faraday.default_connection_options = {ssl: {verify: false}}
