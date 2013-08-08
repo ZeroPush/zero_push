@@ -20,6 +20,14 @@ module ZeroPush
       client.post('/notify', params)
     end
 
+    # Registers a device token with the ZeroPush backend
+    #
+    # @params device_token
+    # @return response
+    def register(device_token)
+      client.post('/register', device_token: device_token)
+    end
+
     # the HTTP client configured for API requests
     #
     def client

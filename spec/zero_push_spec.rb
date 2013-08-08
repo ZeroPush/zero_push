@@ -38,4 +38,19 @@ describe ZeroPush do
       response.status.must_equal 200
     end
   end
+
+  describe "/register" do
+    before do
+      VCR.insert_cassette "register"
+    end
+
+    after do
+      VCR.eject_cassette
+    end
+
+    it "should register the device" do
+      response = ZeroPush.register('abc')
+      response.status.must_equal 200
+    end
+  end
 end
