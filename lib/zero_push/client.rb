@@ -22,7 +22,7 @@ module ZeroPush
 
     # Registers a device token with the ZeroPush backend
     #
-    # @params device_token
+    # @param device_token
     # @return response
     def register(device_token)
       client.post('/register', device_token: device_token)
