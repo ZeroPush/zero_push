@@ -53,4 +53,19 @@ describe ZeroPush do
       response.status.must_equal 200
     end
   end
+
+  describe "/set_badge" do
+    before do
+      VCR.insert_cassette "set_badge"
+    end
+
+    after do
+      VCR.eject_cassette
+    end
+
+    it "should set the device's badge" do
+      response = ZeroPush.set_badge('abc', 10)
+      response.status.must_equal 200
+    end
+  end
 end

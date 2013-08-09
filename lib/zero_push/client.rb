@@ -28,6 +28,15 @@ module ZeroPush
       client.post('/register', device_token: device_token)
     end
 
+    # Sets the badge for a particular device
+    #
+    # @param device_token
+    # @param badge
+    # @return response
+    def set_badge(device_token, badge)
+      client.post('/set_badge', device_token: device_token, badge: badge)
+    end
+
     # the HTTP client configured for API requests
     #
     def client
