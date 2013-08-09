@@ -68,4 +68,19 @@ describe ZeroPush do
       response.status.must_equal 200
     end
   end
+
+  describe "/inactive_tokens" do
+    before do
+      VCR.insert_cassette "inactive_tokens"
+    end
+
+    after do
+      VCR.eject_cassette
+    end
+
+    it "should get a list of inactive tokens" do
+      response = ZeroPush.inactive_tokens
+      response.status.must_equal 200
+    end
+  end
 end

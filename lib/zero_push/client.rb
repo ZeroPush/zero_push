@@ -37,6 +37,13 @@ module ZeroPush
       client.post('/set_badge', device_token: device_token, badge: badge)
     end
 
+    # Returns a list of tokens that have been marked inactive
+    #
+    # @returns array
+    def inactive_tokens
+      client.get('/inactive_tokens')
+    end
+
     # the HTTP client configured for API requests
     #
     def client
