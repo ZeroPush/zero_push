@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    zero_push (1.2.0)
+    zero_push (2.0.0rc1)
       faraday (~> 0.8.5)
 
 GEM
