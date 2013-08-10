@@ -9,10 +9,3 @@ notifications:
   email:
   - adam.v.duke@gmail.com
   - stefan.natchev@gmail.com
-env:
-  global:
-  - secure: ! 'ILUUZU0RUJoOGipo5mpWFGz9rvherA9WBpEdrkQMQBXgGYz0BqqO3hVvdt6l
-
-      2A7p4RxNNxXlOaQ+XUs0s+5WU7O0ni4+QmGrqEWxDdatdd1rSmet7YWUj+H5
-
-      hIJmFtPYbk/ik89NCTYe+XW/RZrTTaUgfPSsYFifl/JanFRa/bE='
