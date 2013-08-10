@@ -6,7 +6,7 @@ describe ZeroPush::Client do
     @client = ZeroPush.client(auth_token)
   end
 
-  describe "/verify_credentials" do
+  describe "#verify_credentials" do
     before do
       VCR.insert_cassette "verify_credentials"
     end
@@ -25,7 +25,7 @@ describe ZeroPush::Client do
     end
   end
 
-  describe "/notify" do
+  describe "#notify" do
     before do
       VCR.insert_cassette "notify"
     end
@@ -40,7 +40,7 @@ describe ZeroPush::Client do
     end
   end
 
-  describe "/register" do
+  describe "#register" do
     before do
       VCR.insert_cassette "register"
     end
@@ -55,7 +55,7 @@ describe ZeroPush::Client do
     end
   end
 
-  describe "/set_badge" do
+  describe "#set_badge" do
     before do
       VCR.insert_cassette "set_badge"
     end
@@ -70,7 +70,7 @@ describe ZeroPush::Client do
     end
   end
 
-  describe "/inactive_tokens" do
+  describe "#inactive_tokens" do
     before do
       VCR.insert_cassette "inactive_tokens"
     end
