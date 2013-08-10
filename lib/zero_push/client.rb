@@ -1,8 +1,12 @@
 module ZeroPush
-  URL = "https://api.zeropush.com"
+  class Client
+    URL = "https://api.zeropush.com"
 
-  class << self
     attr_accessor :auth_token
+
+    def initialize(auth_token)
+      self.auth_token = auth_token
+    end
 
     # verifies credentials
     #
