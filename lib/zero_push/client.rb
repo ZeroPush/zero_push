@@ -1,3 +1,5 @@
+require 'json'
+
 module ZeroPush
   class Client
     URL = "https://api.zeropush.com"
@@ -21,7 +23,8 @@ module ZeroPush
     # @param params [Hash]
     # @return response
     def notify(params)
-      client.post('/notify', params)
+      response = client.post('/notify', params)
+      JSON.parse(response.body)
     end
 
     # Registers a device token with the ZeroPush backend
@@ -29,7 +32,8 @@ module ZeroPush
     # @param device_token
     # @return response
     def register(device_token)
-      client.post('/register', device_token: device_token)
+      response = client.post('/register', device_token: device_token)
+      JSON.parse(response.body)
     end
 
     # Sets the badge for a particular device
@@ -38,14 +42,16 @@ module ZeroPush
     # @param badge
     # @return response
     def set_badge(device_token, badge)
-      client.post('/set_badge', device_token: device_token, badge: badge)
+      response = client.post('/set_badge', device_token: device_token, badge: badge)
+      JSON.parse(response.body)
     end
 
     # Returns a list of tokens that have been marked inactive
     #
     # @returns array
     def inactive_tokens
-      client.get('/inactive_tokens')
+      response = client.get('/inactive_tokens')
+      JSON.parse(response.body)
     end
 
     # the HTTP client configured for API requests

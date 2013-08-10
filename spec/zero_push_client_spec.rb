@@ -34,9 +34,15 @@ describe ZeroPush::Client do
       VCR.eject_cassette
     end
 
+    it "should return a hash" do
+      response = @client.notify(device_tokens: ['abc'], alert: 'hi')
+      response.class.must_equal Hash
+    end
+
     it "should construct the request" do
       response = @client.notify(device_tokens: ['abc'], alert: 'hi')
-      response.status.must_equal 200
+      response['sent_count'].must_equal 0
+      response['inactive_tokens'].must_equal []
     end
   end
 
@@ -49,9 +55,14 @@ describe ZeroPush::Client do
       VCR.eject_cassette
     end
 
+    it "should return a hash" do
+      response = @client.register('abc')
+      response.class.must_equal Hash
+    end
+
     it "should register the device" do
       response = @client.register('abc')
-      response.status.must_equal 200
+      response['message'].must_equal 'ok'
     end
   end
 
@@ -64,9 +75,14 @@ describe ZeroPush::Client do
       VCR.eject_cassette
     end
 
+    it "should return a hash" do
+      response = @client.set_badge('abc', 10)
+      response.class.must_equal Hash
+    end
+
     it "should set the device's badge" do
       response = @client.set_badge('abc', 10)
-      response.status.must_equal 200
+      response['message'].must_equal 'ok'
     end
   end
 
@@ -79,9 +95,14 @@ describe ZeroPush::Client do
       VCR.eject_cassette
     end
 
+    it "should return an array" do
+      response = @client.inactive_tokens
+      response.class.must_equal Array
+    end
+
     it "should get a list of inactive tokens" do
       response = @client.inactive_tokens
-      response.status.must_equal 200
+      response.count.must_equal 2
     end
   end
 end
