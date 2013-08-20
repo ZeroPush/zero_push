@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'json'
 
 describe ZeroPush do
   before do
@@ -6,8 +7,11 @@ describe ZeroPush do
   end
 
   describe ".client" do
+
+    let(:client){ZeroPush.client}
+
     it "should return a Faraday client" do
-      ZeroPush.client.class.must_equal Faraday::Connection
+      client.class.must_equal Faraday::Connection
     end
   end
 
@@ -20,17 +24,15 @@ describe ZeroPush do
       VCR.eject_cassette
     end
 
-    it "should return a TrueClass" do
-      ZeroPush.verify_credentials.class.must_equal TrueClass
-    end
+    let(:response){ZeroPush.verify_credentials}
 
     it "should verify credentials successfully" do
-      ZeroPush.verify_credentials.must_equal true
+      response.must_equal true
     end
 
     it "should fail to verify credentials" do
       ZeroPush.auth_token = "not a valid token"
-      ZeroPush.verify_credentials.must_equal false
+      response.must_equal false
     end
   end
 
@@ -43,13 +45,17 @@ describe ZeroPush do
       VCR.eject_cassette
     end
 
+    let(:response){ZeroPush.notify(device_tokens: ['abc'], alert: 'hi')}
+
     it "should return a Faraday::Response" do
-      response = ZeroPush.notify(device_tokens: ['abc'], alert: 'hi')
       response.class.must_equal Faraday::Response
     end
 
-    it "should construct the request" do
-      response = ZeroPush.notify(device_tokens: ['abc'], alert: 'hi')
+    it "should return a response with a body that can be parsed into a Hash" do
+      JSON.parse(response.body).class.must_equal Hash
+    end
+
+    it "should be successful" do
       response.status.must_equal 200
     end
   end
@@ -63,13 +69,17 @@ describe ZeroPush do
       VCR.eject_cassette
     end
 
+    let(:response){ZeroPush.register('abc')}
+
     it "should return a Faraday::Response" do
-      response = ZeroPush.register('abc')
       response.class.must_equal Faraday::Response
     end
 
+    it "should return a response with a body that can be parsed into a Hash" do
+      JSON.parse(response.body).class.must_equal Hash
+    end
+
     it "should register the device" do
-      response = ZeroPush.register('abc')
       response.status.must_equal 200
     end
   end
@@ -83,13 +93,17 @@ describe ZeroPush do
       VCR.eject_cassette
     end
 
+    let(:response){ZeroPush.set_badge('abc', 10)}
+
     it "should return a Faraday::Response" do
-      response = ZeroPush.set_badge('abc', 10)
       response.class.must_equal Faraday::Response
     end
 
+    it "should return a response with a body that can be parsed into a Hash" do
+      JSON.parse(response.body).class.must_equal Hash
+    end
+
     it "should set the device's badge" do
-      response = ZeroPush.set_badge('abc', 10)
       response.status.must_equal 200
     end
   end
@@ -103,13 +117,17 @@ describe ZeroPush do
       VCR.eject_cassette
     end
 
+    let(:response){ZeroPush.inactive_tokens}
+
     it "should return a Faraday::Response" do
-      response = ZeroPush.inactive_tokens
       response.class.must_equal Faraday::Response
     end
 
+    it "should return a response with a body that can be parsed into an Array" do
+      JSON.parse(response.body).class.must_equal Array
+    end
+
     it "should get a list of inactive tokens" do
-      response = ZeroPush.inactive_tokens
       response.status.must_equal 200
     end
   end
