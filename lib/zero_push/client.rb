@@ -1,57 +1,39 @@
+require 'faraday_middleware'
+
 module ZeroPush
-  URL = "https://api.zeropush.com"
+  class Client
 
-  class << self
-    attr_accessor :auth_token
+    def initialize(auth_token)
+      @faraday = Faraday.new(url: ZeroPush::URL) do |c|
+        c.token_auth auth_token                        # Set the Authorization header
+        c.request    :url_encoded                      # form-encode POST params
+        c.response   :json, :content_type => /\bjson$/ # parse responses to JSON
+        c.adapter    Faraday.default_adapter           # Net::HTTP
+      end
+    end
 
-    # verifies credentials
-    #
-    # @return [Boolean]
     def verify_credentials
-      response = client.get('/verify_credentials')
+      response = faraday.get('/verify_credentials')
       response.status == 200
     end
 
-    # Sends a notification to the list of devices
-    #
-    # @param params [Hash]
-    # @return response
     def notify(params)
-      client.post('/notify', params)
+      faraday.post('/notify', params)
     end
 
-    # Registers a device token with the ZeroPush backend
-    #
-    # @param device_token
-    # @return response
     def register(device_token)
-      client.post('/register', device_token: device_token)
+      faraday.post('/register', device_token: device_token)
     end
 
-    # Sets the badge for a particular device
-    #
-    # @param device_token
-    # @param badge
-    # @return response
     def set_badge(device_token, badge)
-      client.post('/set_badge', device_token: device_token, badge: badge)
+      faraday.post('/set_badge', device_token: device_token, badge: badge)
     end
 
-    # Returns a list of tokens that have been marked inactive
-    #
-    # @returns array
     def inactive_tokens
-      client.get('/inactive_tokens')
+      faraday.get('/inactive_tokens')
     end
 
-    # the HTTP client configured for API requests
-    #
-    def client
-      Faraday.new(url: URL) do |c|
-        c.token_auth  self.auth_token
-        c.request     :url_encoded            # form-encode POST params
-        c.adapter     Faraday.default_adapter # Net::HTTP
-      end
-    end
+    private
+      attr_reader :faraday
   end
 end
