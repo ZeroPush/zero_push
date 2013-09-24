@@ -2,31 +2,31 @@ require 'spec_helper'
 
 describe ZeroPush::Client do
 
-  let(:auth_token){ENV["AUTH_TOKEN"] || 'test_token'}
+  let(:auth_token){ENV['AUTH_TOKEN'] || 'test_token'}
   let(:client){ZeroPush.client(auth_token)}
 
-  describe "#verify_credentials" do
+  describe '#verify_credentials' do
     before do
-      VCR.insert_cassette "verify_credentials"
+      VCR.insert_cassette 'verify_credentials'
     end
 
     after do
       VCR.eject_cassette
     end
 
-    it "should verify credentials successfully" do
+    it 'should verify credentials successfully' do
       client.verify_credentials.must_equal true
     end
 
-    it "should fail to verify credentials" do
-      client = ZeroPush.client("not a valid token")
+    it 'should fail to verify credentials' do
+      client = ZeroPush.client('not a valid token')
       client.verify_credentials.must_equal false
     end
   end
 
-  describe "#notify" do
+  describe '#notify' do
     before do
-      VCR.insert_cassette "notify"
+      VCR.insert_cassette 'notify'
     end
 
     after do
@@ -35,19 +35,19 @@ describe ZeroPush::Client do
 
     let(:response){client.notify(device_tokens: ['abc'], alert: 'hi')}
 
-    it "should return a hash" do
+    it 'should return a hash' do
       response.body.class.must_equal Hash
     end
 
-    it "should construct the request" do
+    it 'should construct the request' do
       response.body['sent_count'].must_equal 0
       response.body['inactive_tokens'].must_equal []
     end
   end
 
-  describe "#register" do
+  describe '#register' do
     before do
-      VCR.insert_cassette "register"
+      VCR.insert_cassette 'register'
     end
 
     after do
@@ -56,18 +56,18 @@ describe ZeroPush::Client do
 
     let(:response){client.register('abc')}
 
-    it "should return a hash" do
+    it 'should return a hash' do
       response.body.class.must_equal Hash
     end
 
-    it "should register the device" do
+    it 'should register the device' do
       response.body['message'].must_equal 'ok'
     end
   end
 
-  describe "#set_badge" do
+  describe '#set_badge' do
     before do
-      VCR.insert_cassette "set_badge"
+      VCR.insert_cassette 'set_badge'
     end
 
     after do
@@ -76,18 +76,18 @@ describe ZeroPush::Client do
 
     let(:response){client.set_badge('abc', 10)}
 
-    it "should return a hash" do
+    it 'should return a hash' do
       response.body.class.must_equal Hash
     end
 
-    it "should set the device's badge" do
+    it 'should set the device\'s badge' do
       response.body['message'].must_equal 'ok'
     end
   end
 
-  describe "#inactive_tokens" do
+  describe '#inactive_tokens' do
     before do
-      VCR.insert_cassette "inactive_tokens"
+      VCR.insert_cassette 'inactive_tokens'
     end
 
     after do
@@ -96,11 +96,11 @@ describe ZeroPush::Client do
 
     let(:response){client.inactive_tokens}
 
-    it "should return an array" do
+    it 'should return an array' do
       response.body.class.must_equal Array
     end
 
-    it "should get a list of inactive tokens" do
+    it 'should get a list of inactive tokens' do
       response.body.count.must_equal 2
     end
   end
