@@ -1,4 +1,4 @@
-require 'json'
+require 'faraday_middleware'
 
 module ZeroPush
   class Client
@@ -26,8 +26,7 @@ module ZeroPush
     # Ex.
     # {"sent_count":0,"inactive_tokens":[],"unregistered_tokens":["abc"]}
     def notify(params)
-      response = client.post('/notify', params)
-      JSON.parse(response.body)
+      client.post('/notify', params)
     end
 
     # Registers a device token with the ZeroPush backend
@@ -38,8 +37,7 @@ module ZeroPush
     # Ex.
     # {"message":"ok"}
     def register(device_token)
-      response = client.post('/register', device_token: device_token)
-      JSON.parse(response.body)
+      client.post('/register', device_token: device_token)
     end
 
     # Sets the badge for a particular device
@@ -51,8 +49,7 @@ module ZeroPush
     # Ex.
     # {"message":"ok"}
     def set_badge(device_token, badge)
-      response = client.post('/set_badge', device_token: device_token, badge: badge)
-      JSON.parse(response.body)
+      client.post('/set_badge', device_token: device_token, badge: badge)
     end
 
     # Returns a list of tokens that have been marked inactive
@@ -71,17 +68,17 @@ module ZeroPush
     #   }
     # ]
     def inactive_tokens
-      response = client.get('/inactive_tokens')
-      JSON.parse(response.body)
+      client.get('/inactive_tokens')
     end
 
     # the HTTP client configured for API requests
     #
     def client
       Faraday.new(url: URL) do |c|
-        c.token_auth  self.auth_token
-        c.request     :url_encoded            # form-encode POST params
-        c.adapter     Faraday.default_adapter # Net::HTTP
+        c.token_auth self.auth_token
+        c.request    :url_encoded            # form-encode POST params
+        c.response   :json, :content_type => /\bjson$/ # parse responses to JSON
+        c.adapter    Faraday.default_adapter # Net::HTTP
       end
     end
   end

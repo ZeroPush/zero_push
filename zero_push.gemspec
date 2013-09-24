@@ -19,6 +19,7 @@ Gem::Specification.new do |gem|
   gem.required_ruby_version = '>= 1.9'
 
   gem.add_dependency "faraday", "~> 0.8.5"
+  gem.add_dependency "faraday_middleware", "~> 0.9.0"
 
   gem.add_development_dependency 'actionpack',    '~> 3.2.11'
   gem.add_development_dependency 'activesupport', '~> 3.2.11'
