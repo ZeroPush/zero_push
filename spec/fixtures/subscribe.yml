@@ -1,0 +1,46 @@
+--- 
+http_interactions: 
+- request: 
+    method: post
+    uri: https://api.zeropush.com/subscribe/foo_channel
+    body: 
+      encoding: US-ASCII
+      string: device_token=abc
+    headers: 
+      Authorization: 
+      - Token token="test_token"
+      User-Agent: 
+      - Faraday v0.8.8
+      Content-Type: 
+      - application/x-www-form-urlencoded
+  response: 
+    status: 
+      code: 200
+      message: 
+    headers: 
+      server: 
+      - nginx/1.2.6
+      date: 
+      - Tue, 24 Sep 2013 21:04:42 GMT
+      content-type: 
+      - application/json; charset=utf-8
+      transfer-encoding: 
+      - chunked
+      connection: 
+      - close
+      status: 
+      - 200 OK
+      strict-transport-security: 
+      - max-age=31536000
+      etag: 
+      - "\"87bf21d9412e1d8611e6bdbe67ee3701\""
+      cache-control: 
+      - max-age=0, private, must-revalidate
+      x-request-id: 
+      - 79f5fe32-7d1e-4ffd-b90f-d17eaa7547da
+    body: 
+      encoding: US-ASCII
+      string: "{\"device_token\":\"abc\",\"channels\":[\"foo_channel\"]}"
+    http_version: 
+  recorded_at: Tue, 24 Sep 2013 21:04:42 GMT
+recorded_with: VCR 2.4.0

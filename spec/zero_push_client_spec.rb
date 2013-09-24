@@ -65,6 +65,48 @@ describe ZeroPush::Client do
     end
   end
 
+  describe '#subscribe' do
+    before do
+      VCR.insert_cassette 'subscribe'
+    end
+
+    after do
+      VCR.eject_cassette
+    end
+
+    let(:response){client.subscribe('abc', 'foo_channel')}
+
+    it 'should return a hash' do
+      response.body.class.must_equal Hash
+    end
+
+    it 'should subscribe a device to a channel' do
+      response.body['device_token'].must_equal 'abc'
+      response.body['channels'].must_equal ['foo_channel']
+    end
+  end
+
+  describe '#unsubscribe' do
+    before do
+      VCR.insert_cassette 'unsubscribe'
+    end
+
+    after do
+      VCR.eject_cassette
+    end
+
+    let(:response){client.unsubscribe('abc', 'foo_channel')}
+
+    it 'should return a hash' do
+      response.body.class.must_equal Hash
+    end
+
+    it 'should subscribe a device to a channel' do
+      response.body['device_token'].must_equal 'abc'
+      response.body['channels'].must_equal []
+    end
+  end
+
   describe '#set_badge' do
     before do
       VCR.insert_cassette 'set_badge'

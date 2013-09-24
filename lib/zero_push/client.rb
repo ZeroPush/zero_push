@@ -29,6 +29,14 @@ module ZeroPush
       client.post('/notify', params)
     end
 
+    def subscribe(device_token, channel)
+      client.post("/subscribe/#{channel}", device_token:device_token)
+    end
+
+    def unsubscribe(device_token, channel)
+      client.delete("/subscribe/#{channel}", device_token:device_token)
+    end
+
     # Registers a device token with the ZeroPush backend
     #
     # @param device_token
