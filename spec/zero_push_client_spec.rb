@@ -107,6 +107,26 @@ describe ZeroPush::Client do
     end
   end
 
+  describe '#broadcast' do
+    before do
+      VCR.insert_cassette 'broadcast'
+    end
+
+    after do
+      VCR.eject_cassette
+    end
+
+    let(:response){client.broadcast(alert:'hi')}
+
+    it 'should return a hash' do
+      response.body.class.must_equal Hash
+    end
+
+    it 'should broadcast a notification to all the devices' do
+      response.body['sent_count'].must_equal 10
+    end
+  end
+
   describe '#set_badge' do
     before do
       VCR.insert_cassette 'set_badge'

@@ -1,0 +1,57 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.zeropush.com/broadcast
+    body:
+      encoding: US-ASCII
+      string: alert=hi
+    headers:
+      Authorization:
+      - Token token="test_token"
+      User-Agent:
+      - Faraday v0.8.8
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      server:
+      - nginx/1.2.6
+      date:
+      - Thu, 06 Jun 2013 20:13:18 GMT
+      content-type:
+      - application/json; charset=utf-8
+      transfer-encoding:
+      - chunked
+      connection:
+      - close
+      status:
+      - 200 OK
+      strict-transport-security:
+      - max-age=31536000
+      x-ua-compatible:
+      - IE=Edge,chrome=1
+      etag:
+      - ! '"58f271cd44a149e655e5c75c6ac3d588"'
+      cache-control:
+      - max-age=0, private, must-revalidate
+      set-cookie:
+      - _zero-push-session=BAh7BkkiD3Nlc3Npb25faWQGOgZFRkkiJTAyN2ZlNmZiYmE2NDAwZTAwNDhkZjljMDhjOTk5MDMzBjsAVA%3D%3D--123a1dc1afeac26db5bea15eea8574e82e0d91b2;
+        path=/; secure; HttpOnly
+      x-request-id:
+      - cb7a26e273628f7f0c9f3c4bbcfb5007
+      x-runtime:
+      - '0.045243'
+      x-rack-cache:
+      - invalidate, pass
+      x-powered-by:
+      - Phusion Passenger 4.0.2
+    body:
+      encoding: US-ASCII
+      string: ! '{"sent_count":10}'
+    http_version: 
+  recorded_at: Thu, 06 Jun 2013 20:13:18 GMT
+recorded_with: VCR 2.4.0

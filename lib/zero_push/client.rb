@@ -29,6 +29,10 @@ module ZeroPush
       client.post('/notify', params)
     end
 
+    def broadcast(params)
+      client.post('/broadcast', params)
+    end
+
     def subscribe(device_token, channel)
       client.post("/subscribe/#{channel}", device_token:device_token)
     end
