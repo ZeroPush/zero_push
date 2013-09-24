@@ -15,7 +15,7 @@ class ZeroPush::GeneratorTest < Rails::Generators::TestCase
       production_config = %Q|ZeroPush.auth_token = '#{production_token}'|
       assert(initializer.include?(production_config), "The initializer doesn't include the production configuration")
 
-      development_config = %Q|ZeroPush.auth_token = '#{development_token}|
+      development_config = %Q|ZeroPush.auth_token = '#{development_token}'|
       assert(initializer.include?(development_config), "The initializer doesn't include the development configuration")
     end
   end
