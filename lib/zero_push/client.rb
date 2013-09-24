@@ -21,22 +21,41 @@ module ZeroPush
     # Sends a notification to the list of devices
     #
     # @param params [Hash]
-    # @return Hash
     #
     # Ex.
-    # {"sent_count":0,"inactive_tokens":[],"unregistered_tokens":["abc"]}
+    # {"sent_count":10,"inactive_tokens":[],"unregistered_tokens":["abc"]}
     def notify(params)
       client.post('/notify', params)
     end
 
+    # Sends a notification to all of the devices registered with the ZeroPush backend
+    #
+    # @param params [Hash]
+    #
+    # Ex.
+    # {"sent_count":10}
     def broadcast(params)
       client.post('/broadcast', params)
     end
 
+    # Subscribes a device to a particular notification channel
+    #
+    # @param device_token [String]
+    # @param channel      [String]
+    #
+    # Ex.
+    # {"device_token":"abc", "channels":["foo"]}
     def subscribe(device_token, channel)
       client.post("/subscribe/#{channel}", device_token:device_token)
     end
 
+    # Unsubscribes a device from a particular notification channel
+    #
+    # @param device_token [String]
+    # @param channel      [String]
+    #
+    # Ex.
+    # {"device_token":"abc", "channels":[]}
     def unsubscribe(device_token, channel)
       client.delete("/subscribe/#{channel}", device_token:device_token)
     end
@@ -44,7 +63,6 @@ module ZeroPush
     # Registers a device token with the ZeroPush backend
     #
     # @param device_token
-    # @return response
     #
     # Ex.
     # {"message":"ok"}
@@ -56,7 +74,6 @@ module ZeroPush
     #
     # @param device_token
     # @param badge
-    # @return response
     #
     # Ex.
     # {"message":"ok"}
@@ -65,8 +82,6 @@ module ZeroPush
     end
 
     # Returns a list of tokens that have been marked inactive
-    #
-    # @returns Array
     #
     # Ex.
     # [
