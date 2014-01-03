@@ -5,7 +5,6 @@ rvm:
 - 1.9.3
 - 2.0.0
 - jruby-19mode
-- rbx
 notifications:
   email:
   - adam.v.duke@gmail.com
