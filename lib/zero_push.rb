@@ -14,6 +14,10 @@ module ZeroPush
       client.notify(params)
     end
 
+    def broadcast(params)
+      client.broadcast(params)
+    end
+
     def register(device_token)
       client.register(device_token)
     end

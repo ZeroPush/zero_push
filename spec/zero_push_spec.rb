@@ -10,4 +10,12 @@ describe ZeroPush do
       ZeroPush.client.class.must_equal ZeroPush::Client
     end
   end
+
+  describe 'methods the module responds to' do
+    [:verify_credentials, :notify, :broadcast, :register, :set_badge, :inactive_tokens, :client].each do |method|
+      it "should respond to #{method}" do
+        ZeroPush.respond_to?(method).must_equal(true)
+      end
+    end
+  end
 end
