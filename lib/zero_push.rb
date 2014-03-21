@@ -18,6 +18,14 @@ module ZeroPush
       client.broadcast(params)
     end
 
+    def subscribe(device_token, channel)
+      client.subscribe(device_token, channel)
+    end
+
+    def unsubscribe(device_token, channel)
+      client.unsubscribe(device_token, channel)
+    end
+
     def register(device_token)
       client.register(device_token)
     end
