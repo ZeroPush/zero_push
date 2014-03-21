@@ -54,4 +54,53 @@ http_interactions:
       string: ! '{"message":"ok"}'
     http_version: 
   recorded_at: Thu, 08 Aug 2013 23:50:39 GMT
+- request:
+    method: post
+    uri: https://api.zeropush.com/register
+    body:
+      encoding: US-ASCII
+      string: device_token=abc&channel=foo
+    headers:
+      Authorization:
+      - Token token="test_token"
+      User-Agent:
+      - Faraday v0.8.9
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      server:
+      - nginx
+      date:
+      - Fri, 21 Mar 2014 04:38:14 GMT
+      content-type:
+      - application/json; charset=utf-8
+      transfer-encoding:
+      - chunked
+      connection:
+      - close
+      status:
+      - 200 OK
+      strict-transport-security:
+      - max-age=31536000
+      x-frame-options:
+      - SAMEORIGIN
+      x-xss-protection:
+      - 1; mode=block
+      x-content-type-options:
+      - nosniff
+      x-ua-compatible:
+      - chrome=1
+      cache-control:
+      - no-cache
+      x-request-id:
+      - 1eb2b29a-00f7-4554-80f3-63aaafbd04ee
+    body:
+      encoding: US-ASCII
+      string: ! '{"message":"ok"}'
+    http_version: 
+  recorded_at: Fri, 21 Mar 2014 04:38:18 GMT
 recorded_with: VCR 2.4.0

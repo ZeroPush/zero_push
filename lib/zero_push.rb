@@ -26,8 +26,8 @@ module ZeroPush
       client.unsubscribe(device_token, channel)
     end
 
-    def register(device_token)
-      client.register(device_token)
+    def register(device_token, channel=nil)
+      client.register(device_token, channel)
     end
 
     def set_badge(device_token, badge)

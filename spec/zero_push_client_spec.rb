@@ -54,14 +54,24 @@ describe ZeroPush::Client do
       VCR.eject_cassette
     end
 
-    let(:response){client.register('abc')}
+    describe 'without a channel parameter' do
+      it 'should return a hash' do
+        client.register('abc').body.class.must_equal Hash
+      end
 
-    it 'should return a hash' do
-      response.body.class.must_equal Hash
+      it 'should register the device' do
+        client.register('abc').body['message'].must_equal 'ok'
+      end
     end
 
-    it 'should register the device' do
-      response.body['message'].must_equal 'ok'
+    describe 'with a channel parameter' do
+      it 'should return a hash' do
+        client.register('abc', 'foo').body.class.must_equal Hash
+      end
+
+      it 'should register the device' do
+        client.register('abc', 'foo').body['message'].must_equal 'ok'
+      end
     end
   end
 

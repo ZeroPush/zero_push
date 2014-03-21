@@ -66,8 +66,10 @@ module ZeroPush
     #
     # Ex.
     # {"message":"ok"}
-    def register(device_token)
-      client.post('/register', device_token: device_token)
+    def register(device_token, channel=nil)
+      params = {device_token: device_token}
+      params.merge!(channel: channel) unless channel.nil?
+      client.post('/register', params)
     end
 
     # Sets the badge for a particular device
