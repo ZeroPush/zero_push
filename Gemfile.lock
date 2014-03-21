@@ -26,7 +26,7 @@ GEM
       multi_json (~> 1.0)
     builder (3.0.4)
     erubis (2.7.0)
-    faraday (0.8.8)
+    faraday (0.8.9)
       multipart-post (~> 1.2.0)
     faraday_middleware (0.9.0)
       faraday (>= 0.7.4, < 0.9)

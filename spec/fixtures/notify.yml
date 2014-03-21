@@ -10,7 +10,7 @@ http_interactions:
       Authorization:
       - Token token="test_token"
       User-Agent:
-      - Faraday v0.8.8
+      - Faraday v0.8.9
       Content-Type:
       - application/x-www-form-urlencoded
   response:
