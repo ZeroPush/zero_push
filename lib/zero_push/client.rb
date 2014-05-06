@@ -72,6 +72,18 @@ module ZeroPush
       client.post('/register', params)
     end
 
+    # Unregisters a device token that has previously been registered with
+    # ZeroPush
+    #
+    # @param device_token
+    #
+    # Ex.
+    # {"message":"ok"}
+    def unregister(device_token)
+      params = {device_token: device_token}
+      client.delete('/unregister', params)
+    end
+
     # Sets the badge for a particular device
     #
     # @param device_token

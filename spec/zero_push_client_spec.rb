@@ -75,6 +75,31 @@ describe ZeroPush::Client do
     end
   end
 
+
+  describe '#unregister' do
+
+    before do
+      VCR.insert_cassette 'unregister'
+    end
+
+    after do
+      VCR.eject_cassette
+    end
+
+    describe 'when the device has been registered' do
+      it 'should return a hash' do
+        client.register('abc')
+        client.unregister('abc').body.class.must_equal Hash
+      end
+
+      it 'should unregister the device' do
+        client.register('abc')
+        client.unregister('abc').body['message'].must_equal 'ok'
+      end
+    end
+
+  end
+
   describe '#subscribe' do
     before do
       VCR.insert_cassette 'subscribe'
