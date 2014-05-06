@@ -30,6 +30,10 @@ module ZeroPush
       client.register(device_token, channel)
     end
 
+    def unregister(device_token)
+      client.unregister(device_token)
+    end
+
     def set_badge(device_token, badge)
       client.set_badge(device_token, badge)
     end

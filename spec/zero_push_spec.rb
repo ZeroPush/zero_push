@@ -12,7 +12,7 @@ describe ZeroPush do
   end
 
   describe 'methods the module responds to' do
-    [:verify_credentials, :notify, :broadcast, :subscribe, :unsubscribe, :register, :set_badge, :inactive_tokens, :client].each do |method|
+    [:verify_credentials, :notify, :broadcast, :subscribe, :unsubscribe, :register, :unregister, :set_badge, :inactive_tokens, :client].each do |method|
       it "should respond to #{method}" do
         ZeroPush.respond_to?(method).must_equal(true)
       end
