@@ -80,8 +80,7 @@ module ZeroPush
     # Ex.
     # {"message":"ok"}
     def unregister(device_token)
-      params = {device_token: device_token}
-      client.delete('/unregister', params)
+      client.delete('/unregister', device_token: device_token)
     end
 
     # Sets the badge for a particular device
