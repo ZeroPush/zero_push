@@ -75,7 +75,6 @@ describe ZeroPush::Client do
     end
   end
 
-
   describe '#unregister' do
 
     before do
@@ -88,12 +87,10 @@ describe ZeroPush::Client do
 
     describe 'when the device has been registered' do
       it 'should return a hash' do
-        client.register('abc')
         client.unregister('abc').body.class.must_equal Hash
       end
 
       it 'should unregister the device' do
-        client.register('abc')
         client.unregister('abc').body['message'].must_equal 'ok'
       end
     end
