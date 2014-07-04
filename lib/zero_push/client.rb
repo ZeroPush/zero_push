@@ -118,7 +118,7 @@ module ZeroPush
         c.token_auth self.auth_token
         c.request    :url_encoded            # form-encode POST params
         c.response   :json, :content_type => /\bjson$/ # parse responses to JSON
-        c.adapter    Faraday.default_adapter # Net::HTTP
+        c.adapter    Faraday.default_adapter
       end
     end
   end

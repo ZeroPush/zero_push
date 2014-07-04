@@ -1,6 +1,6 @@
-[![ZeroPush](https://raw.github.com/SymmetricInfinity/zero_push/master/zeropush-header.png)](https://zeropush.com)
+[![ZeroPush](https://raw.github.com/ZeroPush/zero_push/master/zeropush-header.png)](https://zeropush.com)
 
-Build Status: [![Build Status](https://travis-ci.org/SymmetricInfinity/zero_push.png?branch=master)](https://travis-ci.org/SymmetricInfinity/zero_push)
+Build Status: [![Build Status](https://travis-ci.org/ZeroPush/zero_push.png?branch=master)](https://travis-ci.org/ZeroPush/zero_push)
 
 ## Installation
 

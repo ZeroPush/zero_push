@@ -8,7 +8,8 @@ class ZeroPush::GeneratorTest < Rails::Generators::TestCase
   test 'it copies the initializer' do
     production_token = 'production'
     development_token = 'development'
-    $stdin.stubs(:gets).returns(production_token).then.returns(development_token)
+    ZeroPush::InstallGenerator.any_instance.stubs(:ask).returns(production_token).then.returns(development_token)
+
     run_generator
 
     assert_file 'config/initializers/zero_push.rb' do |initializer|
