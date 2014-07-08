@@ -1,11 +1,10 @@
 require 'spec_helper'
 
-device_token = 64.times.collect { Random.rand(16).to_s(16) }.join
-
 describe ZeroPush::Client do
 
-  let(:auth_token){ENV['AUTH_TOKEN'] || 'test_token'}
-  let(:client){ZeroPush.client(auth_token)}
+  let(:auth_token){ ENV['AUTH_TOKEN'] }
+  let(:client){ ZeroPush.client(auth_token) }
+  let(:device_token) { 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' }
 
   describe '#verify_credentials' do
 
@@ -164,7 +163,7 @@ describe ZeroPush::Client do
     end
 
     it 'should get a list of inactive tokens' do
-      response.body.count.must_equal 2
+      response.body.count.must_equal 1
     end
   end
 end
