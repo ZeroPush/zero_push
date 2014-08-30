@@ -25,19 +25,19 @@ Generate the ZeroPush initializer if you are using Ruby on Rails.
 
 ### API Client
 
-The easiest way to use the API client is to set the auth token at the module level and call methods on the ZeroPush module.
+The easiest way to use the API client is to set the server `auth_token` at the module level and call methods on the ZeroPush module. You can find the token on settings page for your app.
 
-    ZeroPush.auth_token = 'your-auth-token'
+    ZeroPush.auth_token = 'server-token'
     ZeroPush.verify_credentials
     => true
 
 If your application requires multiple API client instances, that can be achieved as well.
 
-    client_1 = ZeroPush.client('auth-token-1')
+    client_1 = ZeroPush.client('server-token-1')
     client_1.verify_credentials
     => true
 
-    client_2 = ZeroPush.client('auth-token-2')
+    client_2 = ZeroPush.client('server-token-2')
     client_2.verify_credentials
     => true
 
