@@ -1,0 +1,133 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Zero push by ZeroPush</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Zero push</h1>
+        <p>Ruby wrapper for the ZeroPush API</p>
+
+        <p class="view"><a href="https://github.com/ZeroPush/zero_push">View the Project on GitHub <small>ZeroPush/zero_push</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/ZeroPush/zero_push/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/ZeroPush/zero_push/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/ZeroPush/zero_push">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <p><a href="https://zeropush.com"><img src="https://raw.github.com/ZeroPush/zero_push/master/zeropush-header.png" alt="ZeroPush"></a></p>
+
+<p><a href="https://travis-ci.org/ZeroPush/zero_push"><img src="http://img.shields.io/travis/ZeroPush/zero_push.svg" alt="Build Status"></a> <a href="http://rubygems.org/gems/zero_push"><img src="http://img.shields.io/gem/v/zero_push.svg" alt="Gem Version"></a></p>
+
+<h2>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h2>
+
+<p>Add this line to your application's Gemfile:</p>
+
+<pre><code>gem 'zero_push'
+</code></pre>
+
+<p>And then execute:</p>
+
+<pre><code>$ bundle
+</code></pre>
+
+<p>Or install it yourself as:</p>
+
+<pre><code>$ gem install zero_push
+</code></pre>
+
+<h2>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h2>
+
+<h3>
+<a id="rails-generator" class="anchor" href="#rails-generator" aria-hidden="true"><span class="octicon octicon-link"></span></a>Rails Generator</h3>
+
+<p>Generate the ZeroPush initializer if you are using Ruby on Rails.</p>
+
+<pre><code>$ rails g zero_push:install
+</code></pre>
+
+<h3>
+<a id="api-client" class="anchor" href="#api-client" aria-hidden="true"><span class="octicon octicon-link"></span></a>API Client</h3>
+
+<p>The easiest way to use the API client is to set the server <code>auth_token</code> at the module level and call methods on the ZeroPush module. You can find the token on settings page for your app.</p>
+
+<pre><code>ZeroPush.auth_token = 'server-token'
+ZeroPush.verify_credentials
+=&gt; true
+</code></pre>
+
+<p>If your application requires multiple API client instances, that can be achieved as well.</p>
+
+<pre><code>client_1 = ZeroPush.client('server-token-1')
+client_1.verify_credentials
+=&gt; true
+
+client_2 = ZeroPush.client('server-token-2')
+client_2.verify_credentials
+=&gt; true
+</code></pre>
+
+<p>For more documentation, check our <a href="https://zeropush.com/documentation">Getting Started Guide with ZeroPush</a></p>
+
+<h2>
+<a id="contributing" class="anchor" href="#contributing" aria-hidden="true"><span class="octicon octicon-link"></span></a>Contributing</h2>
+
+<ol>
+<li>Fork it</li>
+<li>Create your feature branch (<code>git checkout -b my-new-feature</code>)</li>
+<li>Write tests for your feature</li>
+<li>Commit your changes (<code>git commit -am 'Add some feature'</code>)</li>
+<li>Push to the branch (<code>git push origin my-new-feature</code>)</li>
+<li>Create new Pull Request</li>
+</ol>
+
+<h2>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span class="octicon octicon-link"></span></a>License</h2>
+
+<p>Copyright (c) 2014 Symmetric Infinity LLC</p>
+
+<p>MIT License</p>
+
+<p>Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+"Software"), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:</p>
+
+<p>The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.</p>
+
+<p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/ZeroPush">ZeroPush</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
