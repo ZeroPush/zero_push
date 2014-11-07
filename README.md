@@ -41,6 +41,9 @@ If your application requires multiple API client instances, that can be achieved
     client_2.verify_credentials
     => true
 
+
+Methods supported by this gem and their parameters can be found in the [API Reference](https://zeropush.com/documentation/api_reference)
+
 For more documentation, check our [Getting Started Guide with ZeroPush](https://zeropush.com/documentation)
 
 ## Contributing
