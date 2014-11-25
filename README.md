@@ -1,6 +1,6 @@
 [![ZeroPush](https://raw.github.com/ZeroPush/zero_push/master/zeropush-header.png)](https://zeropush.com)
 
-[![Build Status](http://img.shields.io/travis/ZeroPush/zero_push.svg)](https://travis-ci.org/ZeroPush/zero_push) [![Gem Version](http://img.shields.io/gem/v/zero_push.svg)](http://rubygems.org/gems/zero_push)
+[![Build Status](http://img.shields.io/travis/ZeroPush/zero_push.svg)](https://travis-ci.org/ZeroPush/zero_push) [![Code Climate](https://codeclimate.com/github/ZeroPush/zero_push/badges/gpa.svg)](https://codeclimate.com/github/ZeroPush/zero_push) [![Gem Version](http://img.shields.io/gem/v/zero_push.svg)](http://rubygems.org/gems/zero_push)
 
 ## Installation
 
