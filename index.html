@@ -30,7 +30,7 @@
       <section>
         <p><a href="https://zeropush.com"><img src="https://raw.github.com/ZeroPush/zero_push/master/zeropush-header.png" alt="ZeroPush"></a></p>
 
-<p><a href="https://travis-ci.org/ZeroPush/zero_push"><img src="http://img.shields.io/travis/ZeroPush/zero_push.svg" alt="Build Status"></a> <a href="http://rubygems.org/gems/zero_push"><img src="http://img.shields.io/gem/v/zero_push.svg" alt="Gem Version"></a></p>
+<p><a href="https://travis-ci.org/ZeroPush/zero_push"><img src="http://img.shields.io/travis/ZeroPush/zero_push.svg" alt="Build Status"></a> <a href="https://codeclimate.com/github/ZeroPush/zero_push"><img src="https://codeclimate.com/github/ZeroPush/zero_push/badges/gpa.svg" alt="Code Climate"></a> <a href="http://rubygems.org/gems/zero_push"><img src="http://img.shields.io/gem/v/zero_push.svg" alt="Gem Version"></a></p>
 
 <h2>
 <a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h2>
@@ -66,21 +66,39 @@
 
 <p>The easiest way to use the API client is to set the server <code>auth_token</code> at the module level and call methods on the ZeroPush module. You can find the token on settings page for your app.</p>
 
-<pre><code>ZeroPush.auth_token = 'server-token'
-ZeroPush.verify_credentials
-=&gt; true
-</code></pre>
+<div class="highlight highlight-ruby"><pre>  <span class="pl-s3">ZeroPush</span>.auth_token <span class="pl-k">=</span> <span class="pl-s1"><span class="pl-pds">'</span>iosprod_your-server-token<span class="pl-pds">'</span></span>
+  <span class="pl-s3">ZeroPush</span>.verify_credentials
+  =&gt; <span class="pl-c1">true</span>
+  <span class="pl-s3">ZeroPush</span>.notify(<span class="pl-c1">device_tokens:</span> [<span class="pl-s1"><span class="pl-pds">'</span>abcdef<span class="pl-pds">'</span></span>], <span class="pl-c1">alert:</span> <span class="pl-s1"><span class="pl-pds">'</span>hello, world<span class="pl-pds">'</span></span>, <span class="pl-c1">badge:</span> <span class="pl-s1"><span class="pl-pds">'</span>+1<span class="pl-pds">'</span></span>)</pre></div>
 
-<p>If your application requires multiple API client instances, that can be achieved as well.</p>
+<p>If your web application supports must support multiple mobile apps, you may configure it like this:</p>
 
-<pre><code>client_1 = ZeroPush.client('server-token-1')
-client_1.verify_credentials
-=&gt; true
+<div class="highlight highlight-ruby"><pre>  <span class="pl-k">if</span> <span class="pl-s3">Rails</span>.env <span class="pl-k">==</span> <span class="pl-s1"><span class="pl-pds">'</span>development<span class="pl-pds">'</span></span>  <span class="pl-c">#or ENV['RACK_ENV']</span>
+    <span class="pl-s3">ZeroPush</span>.auth_tokens <span class="pl-k">=</span> {
+      <span class="pl-c1">apns:</span> <span class="pl-s1"><span class="pl-pds">'</span>iosdev_XYZ<span class="pl-pds">'</span></span>,
+      <span class="pl-c1">gcm:</span> <span class="pl-s1"><span class="pl-pds">'</span>gcmdev_ABC<span class="pl-pds">'</span></span>,
+    }
+  <span class="pl-k">else</span>
+    <span class="pl-s3">ZeroPush</span>.auth_tokens <span class="pl-k">=</span> {
+      <span class="pl-c1">apns:</span> <span class="pl-s1"><span class="pl-pds">'</span>iosprod_XYZ<span class="pl-pds">'</span></span>,
+      <span class="pl-c1">gcm:</span> <span class="pl-s1"><span class="pl-pds">'</span>gcmprod_ABC<span class="pl-pds">'</span></span>,
+    }
+  <span class="pl-k">end</span></pre></div>
 
-client_2 = ZeroPush.client('server-token-2')
-client_2.verify_credentials
-=&gt; true
-</code></pre>
+<p>You may then instantiate clients by calling the method that matches the auth token key:</p>
+
+<div class="highlight highlight-ruby"><pre>  <span class="pl-s3">ZeroPush</span>.apns.broadcast( ... )
+  <span class="pl-s3">ZeroPush</span>.gcm.broadcast( ... )</pre></div>
+
+<p>Lastly, if you have many apps you may instantiate clients API Clients</p>
+
+<div class="highlight highlight-ruby"><pre>  client_1 <span class="pl-k">=</span> <span class="pl-s3">ZeroPush</span>.client(<span class="pl-s1"><span class="pl-pds">'</span>iosprod_app-server-token-1<span class="pl-pds">'</span></span>)
+  client_1.broadcast(<span class="pl-c1">alert:</span> <span class="pl-s1"><span class="pl-pds">'</span>hello, app1<span class="pl-pds">'</span></span>)
+
+  client_2 <span class="pl-k">=</span> <span class="pl-s3">ZeroPush</span>.client(<span class="pl-s1"><span class="pl-pds">'</span>iosprod_app-server-token-2<span class="pl-pds">'</span></span>)
+  client_1.broadcast(<span class="pl-c1">alert:</span> <span class="pl-s1"><span class="pl-pds">'</span>hello, app2<span class="pl-pds">'</span></span>)</pre></div>
+
+<p>Methods supported by this gem and their parameters can be found in the <a href="https://zeropush.com/documentation/api_reference">API Reference</a></p>
 
 <p>For more documentation, check our <a href="https://zeropush.com/documentation">Getting Started Guide with ZeroPush</a></p>
 
@@ -95,32 +113,6 @@ client_2.verify_credentials
 <li>Push to the branch (<code>git push origin my-new-feature</code>)</li>
 <li>Create new Pull Request</li>
 </ol>
-
-<h2>
-<a id="license" class="anchor" href="#license" aria-hidden="true"><span class="octicon octicon-link"></span></a>License</h2>
-
-<p>Copyright (c) 2014 Symmetric Infinity LLC</p>
-
-<p>MIT License</p>
-
-<p>Permission is hereby granted, free of charge, to any person obtaining
-a copy of this software and associated documentation files (the
-"Software"), to deal in the Software without restriction, including
-without limitation the rights to use, copy, modify, merge, publish,
-distribute, sublicense, and/or sell copies of the Software, and to
-permit persons to whom the Software is furnished to do so, subject to
-the following conditions:</p>
-
-<p>The above copyright notice and this permission notice shall be
-included in all copies or substantial portions of the Software.</p>
-
-<p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
-LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
-OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
-WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
       </section>
       <footer>
         <p>This project is maintained by <a href="https://github.com/ZeroPush">ZeroPush</a></p>
