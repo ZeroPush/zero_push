@@ -1,11 +1,12 @@
 require 'zero_push/version'
+require 'zero_push/compatibility'
 require 'zero_push/client'
 require 'faraday'
 
 module ZeroPush
   class << self
     extend Forwardable
-    attr_accessor :auth_token, :auth_tokens
+    attr_accessor :auth_token, :auth_tokens, :config
 
     def_delegators :client,
       :verify_credentials,
@@ -20,6 +21,10 @@ module ZeroPush
 
     def client(auth_token = self.auth_token)
       ZeroPush::Client.new(auth_token)
+    end
+
+    def config
+      @config ||= {:http_adapter => Faraday.default_adapter, request_encoding: :json}
     end
 
     def method_missing(method, *params, &block)

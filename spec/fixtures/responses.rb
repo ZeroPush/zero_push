@@ -1,5 +1,5 @@
 class ZeroPush::Client
-  def client
+  def http
     Faraday.new do |builder|
       builder.token_auth self.auth_token
       builder.response :json, :content_type => /\bjson$/ # parse responses to JSON

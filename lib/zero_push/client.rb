@@ -4,6 +4,8 @@ module ZeroPush
   class Client
     URL = 'https://api.zeropush.com'.freeze
 
+    include Compatibility
+
     attr_accessor :auth_token
 
     def initialize(auth_token)
@@ -14,7 +16,7 @@ module ZeroPush
     #
     # @return [Boolean]
     def verify_credentials
-      response = client.get('/verify_credentials')
+      response = http.get('/verify_credentials')
       response.status == 200
     end
 
@@ -25,7 +27,7 @@ module ZeroPush
     # Ex.
     # {"sent_count":10,"inactive_tokens":[],"unregistered_tokens":["abc"]}
     def notify(params)
-      client.post('/notify', params)
+      http.post('/notify', params)
     end
 
     # Sends a notification to all of the devices registered with the ZeroPush backend
@@ -35,7 +37,7 @@ module ZeroPush
     # Ex.
     # {"sent_count":10}
     def broadcast(params)
-      client.post('/broadcast', params)
+      http.post('/broadcast', params)
     end
 
     # Subscribes a device to a particular notification channel
@@ -46,7 +48,7 @@ module ZeroPush
     # Ex.
     # {"device_token":"abc", "channels":["foo"]}
     def subscribe(device_token, channel)
-      client.post("/subscribe/#{channel}", device_token:device_token)
+      http.post("/subscribe/#{channel}", device_token:device_token)
     end
 
     # Unsubscribes a device from a particular notification channel
@@ -57,7 +59,7 @@ module ZeroPush
     # Ex.
     # {"device_token":"abc", "channels":[]}
     def unsubscribe(device_token, channel)
-      client.delete("/subscribe/#{channel}", device_token:device_token)
+      http.delete("/subscribe/#{channel}", device_token:device_token)
     end
 
     # Registers a device token with the ZeroPush backend
@@ -69,7 +71,7 @@ module ZeroPush
     def register(device_token, channel=nil)
       params = {device_token: device_token}
       params.merge!(channel: channel) unless channel.nil?
-      client.post('/register', params)
+      http.post('/register', params)
     end
 
     # Unregisters a device token that has previously been registered with
@@ -80,7 +82,7 @@ module ZeroPush
     # Ex.
     # {"message":"ok"}
     def unregister(device_token)
-      client.delete('/unregister', device_token: device_token)
+      http.delete('/unregister', device_token: device_token)
     end
 
     # Sets the badge for a particular device
@@ -91,7 +93,7 @@ module ZeroPush
     # Ex.
     # {"message":"ok"}
     def set_badge(device_token, badge)
-      client.post('/set_badge', device_token: device_token, badge: badge)
+      http.post('/set_badge', device_token: device_token, badge: badge)
     end
 
     # Returns a list of tokens that have been marked inactive
@@ -107,19 +109,23 @@ module ZeroPush
     #     "marked_inactive_at":"2013-07-17T01:27:50-04:00"
     #   }
     # ]
-    def inactive_tokens
-      client.get('/inactive_tokens')
+    def inactive_tokens(params = {page:1})
+      http.get('/inactive_tokens', params)
     end
 
-    # the HTTP client configured for API requests
-    #
-    def client
+    def http
       Faraday.new(url: URL) do |c|
         c.token_auth self.auth_token
-        c.request    :url_encoded            # form-encode POST params
+        c.request    http_config[:request_encoding]
         c.response   :json, :content_type => /\bjson$/ # parse responses to JSON
-        c.adapter    Faraday.default_adapter
+        c.adapter    http_config[:http_adapter]
       end
     end
+    alias client http
+
+    protected
+      def http_config
+        @http_config ||= ZeroPush.config.dup
+      end
   end
 end
