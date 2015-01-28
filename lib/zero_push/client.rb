@@ -113,6 +113,26 @@ module ZeroPush
       http.get('/inactive_tokens', params)
     end
 
+    def devices(params = {page:1})
+      http.get('/devices', params)
+    end
+
+    def device(token)
+      http.get("/devices/#{token}")
+    end
+
+    def channels(params = {page:1})
+      http.get('/channels', params)
+    end
+
+    def channel(channel_name)
+      http.get("/channels/#{channel_name}")
+    end
+
+    def delete_channel(channel_name)
+      http.delete("/channels/#{channel_name}")
+    end
+
     def http
       Faraday.new(url: URL) do |c|
         c.token_auth self.auth_token

@@ -17,7 +17,13 @@ module ZeroPush
       :register,
       :unregister,
       :set_badge,
-      :inactive_tokens
+      :inactive_tokens,
+      :devices,
+      :set_device,
+      :update_device,
+      :channels,
+      :channel,
+      :delete_channel
 
     def client(auth_token = self.auth_token)
       ZeroPush::Client.new(auth_token)
