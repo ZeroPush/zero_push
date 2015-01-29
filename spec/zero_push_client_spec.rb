@@ -42,7 +42,7 @@ describe ZeroPush::Client do
     it 'should verify credentials successfully' do
       stub_request(:get, "https://api.zeropush.com/verify_credentials").
         with(headers: {'Authorization'=>'Token token="test-token"'}).
-        to_return(status: 200, body: '{"message": "authenticated"}', headers: {'Content-Type': 'application/json'})
+        to_return(status: 200, body: '{"message": "authenticated"}', headers: {'Content-Type' => 'application/json'})
 
       client.verify_credentials.must_equal true
     end
@@ -61,7 +61,7 @@ describe ZeroPush::Client do
     before do
       stub_request(:post, "https://api.zeropush.com/notify").
         with(body: '{"device_tokens":["aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"],"alert":"hi"}').
-        to_return(status: 200, body: '{"sent_count":1, "inactive_tokens":[], "unregistered_tokens":[]}', headers: {'Content-Type': 'application/json'})
+        to_return(status: 200, body: '{"sent_count":1, "inactive_tokens":[], "unregistered_tokens":[]}', headers: {'Content-Type' => 'application/json'})
       client.register(device_token)
     end
 
@@ -97,7 +97,7 @@ describe ZeroPush::Client do
         stub_request(:post, "https://api.zeropush.com/register").
           with(body: '{"device_token":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","channel":"foo"}',
                headers: {'Authorization'=>'Token token="test-token"', 'Content-Type'=>'application/json'}).
-          to_return(status: 200, body: '{"message":"ok"}', headers: {'Content-Type': 'application/json'})
+          to_return(status: 200, body: '{"message":"ok"}', headers: {'Content-Type'=>'application/json'})
       end
       it 'should return a hash' do
         client.register(device_token, 'foo').body.class.must_equal Hash
@@ -117,7 +117,7 @@ describe ZeroPush::Client do
     describe 'when the device has been registered' do
       before do
         stub_request(:delete, "https://api.zeropush.com/unregister?device_token=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").
-          to_return(status: 200, body: '{"message":"ok"}', headers: {'Content-Type': 'application/json'})
+          to_return(status: 200, body: '{"message":"ok"}', headers: {'Content-Type' => 'application/json'})
       end
 
       it 'should return a hash' do
@@ -134,7 +134,7 @@ describe ZeroPush::Client do
     before do
       stub_request(:post, "https://api.zeropush.com/subscribe/foo_channel").
         with(body: '{"device_token":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"}').
-        to_return(status: 200, body: '{"device_token": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","channels":["foo_channel"]}', headers: {'Content-Type': 'application/json'})
+        to_return(status: 200, body: '{"device_token": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","channels":["foo_channel"]}', headers: {'Content-Type' => 'application/json'})
     end
 
     let(:response){client.subscribe(device_token, 'foo_channel')}
@@ -171,7 +171,7 @@ describe ZeroPush::Client do
     before do
       stub_request(:post, "https://api.zeropush.com/broadcast").
         with(body: '{"alert":"hi"}').
-        to_return(status: 200, body: '{"sent_count":10}', headers: {'Content-Type': 'application/json'})
+        to_return(status: 200, body: '{"sent_count":10}', headers: {'Content-Type' => 'application/json'})
     end
     let(:response){client.broadcast(alert:'hi')}
 
@@ -195,7 +195,7 @@ describe ZeroPush::Client do
     before do
       stub_request(:post, "https://api.zeropush.com/set_badge").
         with(body: '{"device_token":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","badge":10}').
-        to_return(status: 200, body: '{"message":"ok"}', headers: {'Content-Type': 'application/json'})
+        to_return(status: 200, body: '{"message":"ok"}', headers: {'Content-Type'=>'application/json'})
     end
 
     let(:response){client.set_badge(device_token, 10)}
@@ -214,7 +214,7 @@ describe ZeroPush::Client do
     let(:response){client.inactive_tokens}
     before do
       stub_request(:get, "https://api.zeropush.com/inactive_tokens?page=1").
-        to_return(status: 200, body: '[{"device_token": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","marked_inactive_at": "2013-03-11T16:25:14-04:00"}]', headers: {'Content-Type': 'application/json'})
+        to_return(status: 200, body: '[{"device_token": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","marked_inactive_at": "2013-03-11T16:25:14-04:00"}]', headers: {'Content-Type'=>'application/json'})
     end
 
     it 'should return an array' do
@@ -252,7 +252,7 @@ describe ZeroPush::Client do
     "testflight",
     "user@example.com"
   ]
-}', headers: {'Content-Type': 'application/json'})
+}', headers: {'Content-Type'=>'application/json'})
     end
     let(:response){client.device('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa')}
 
@@ -265,7 +265,7 @@ describe ZeroPush::Client do
   describe '#channels' do
     before do
       stub_request(:get, "https://api.zeropush.com/channels?page=1").
-        to_return(status: 200, body: '["player-1","foobar"]', headers: {'Content-Type': 'application/json', 'Link' => '<https://api.zeropush.com/channels?page=10&per_page=25>; rel="last",<https://api.zeropush.com/channels?page=2&per_page=25>; rel="next"'})
+        to_return(status: 200, body: '["player-1","foobar"]', headers: {'Content-Type'=>'application/json', 'Link' => '<https://api.zeropush.com/channels?page=10&per_page=25>; rel="last",<https://api.zeropush.com/channels?page=2&per_page=25>; rel="next"'})
     end
     let(:response){client.channels}
     it 'should return an array' do
