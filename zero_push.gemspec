@@ -28,4 +28,5 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency 'rake',            '~> 10.3.2'
   gem.add_development_dependency 'railties',        '~> 4.1.4'
   gem.add_development_dependency 'pry'
+  gem.add_development_dependency 'webmock',         '~> 1.20.4'
 end
