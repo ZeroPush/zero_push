@@ -1,15 +1,15 @@
+require 'zero_push/compatibility'
 require 'faraday_middleware'
 
 module ZeroPush
   class Client
     URL = 'https://api.zeropush.com'.freeze
 
-    include Compatibility
-
     attr_accessor :auth_token
 
     def initialize(auth_token)
       self.auth_token = auth_token
+      self.extend(Compatibility)
     end
 
     # verifies credentials

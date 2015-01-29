@@ -1,20 +1,20 @@
 module ZeroPush
   module Compatibility
-    def notify(params)
-      params.symbolize_keys!
-      if (params[:info] || params[:data]).is_a?(String)
-        warn "[DEPRECATION] `info` or `data` should not be passed in as encoded strings."
+    def warn_on_deprecated_parameters(params)
+      value = (params[:info] || params['info'] || params[:data] || params['data'])
+      if value.is_a?(String)
+        warn "[DEPRECATION] `info` or `data` encoded as a string will not be supported in 2.5.1; Use a hash."
         http_config[:request_encoding] = :url_encoded
       end
+    end
+
+    def notify(params)
+      warn_on_deprecated_parameters(params)
       super
     end
 
     def broadcast(params)
-      params.symbolize_keys!
-      if (params[:info] || params[:data]).is_a?(String)
-        warn "[DEPRECATION] `info` or `data` should not be passed in as encoded strings."
-        http_config[:request_encoding] = :url_encoded
-      end
+      warn_on_deprecated_parameters(params)
       super
     end
   end
