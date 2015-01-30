@@ -3,7 +3,7 @@ module ZeroPush
     def warn_on_deprecated_parameters(params)
       value = (params[:info] || params['info'] || params[:data] || params['data'])
       if value.is_a?(String)
-        warn "[DEPRECATION] `info` or `data` encoded as a string will not be supported in 2.5.1; Use a hash."
+        warn "[DEPRECATION] `info` or `data` encoded as a string will not be supported in version 3.0.0; Use a hash instead."
         http_config[:request_encoding] = :url_encoded
       end
     end
