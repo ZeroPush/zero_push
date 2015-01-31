@@ -29,9 +29,7 @@ The easiest way to use the API client is to set the server `auth_token` at the m
 
 ```ruby
   ZeroPush.auth_token = 'iosprod_your-server-token'
-  ZeroPush.verify_credentials
-  => true
-  ZeroPush.notify(device_tokens: ['abcdef'], alert: 'hello, world', badge: '+1')
+  ZeroPush.notify(device_tokens: ['abcdef'], alert: 'hello, world', badge: '+1', info: {user_id: 1234})
 ```
 
 If your web application supports must support multiple mobile apps, you may configure it like this:
