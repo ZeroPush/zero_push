@@ -8,7 +8,8 @@ module ZeroPush
     attr_accessor :auth_token
 
     def initialize(auth_token)
-      self.auth_token = auth_token
+      @auth_token = auth_token
+
       self.extend(Compatibility)
     end
 
