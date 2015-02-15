@@ -6,7 +6,7 @@ describe ZeroPush do
   end
 
   describe 'using different auth_tokens' do
-    it 'should accept a hash of tokens' do
+    it 'accepts a hash of tokens' do
       ZeroPush.auth_tokens = {
         apns: 'test-apns-token',
         gcm: 'test-gcm-token'
@@ -17,14 +17,14 @@ describe ZeroPush do
   end
 
   describe '.client' do
-    it 'should return a client instance' do
+    it 'returns a client instance' do
       ZeroPush.client.class.must_equal ZeroPush::Client
     end
   end
 
   describe 'methods the module responds to' do
     [:verify_credentials, :notify, :broadcast, :subscribe, :unsubscribe, :register, :unregister, :set_badge, :inactive_tokens, :client].each do |method|
-      it "should respond to #{method}" do
+      it "responds to #{method}" do
         ZeroPush.respond_to?(method).must_equal(true)
       end
     end
