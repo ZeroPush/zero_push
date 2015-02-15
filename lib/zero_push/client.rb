@@ -16,8 +16,7 @@ module ZeroPush
     #
     # @return [Boolean]
     def verify_credentials
-      response = http.get('/verify_credentials')
-      response.status == 200
+      http.get('/verify_credentials').success?
     end
 
     # Sends a notification to the list of devices
