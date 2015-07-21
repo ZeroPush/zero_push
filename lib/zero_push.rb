@@ -18,6 +18,7 @@ module ZeroPush
       :set_badge,
       :inactive_tokens,
       :devices,
+      :device,
       :set_device,
       :update_device,
       :channels,
